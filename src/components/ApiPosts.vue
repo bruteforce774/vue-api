@@ -13,12 +13,13 @@
 
 <script setup>
 import { ref, onMounted } from 'vue';
+import axios from 'axios';
 
 const posts = ref([]);
 
 onMounted(async () => {
-  const res = await fetch('https://jsonplaceholder.typicode.com/posts?_limit=5');
-  posts.value = await res.json();
+  const res = await axios.get('https://jsonplaceholder.typicode.com/posts?_limit=5');
+  posts.value = res.data;
 });
 </script>
 
